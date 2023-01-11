@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">manageApp</string>
+    <string name="title_activity_main">manageApp</string>
+    <string name="package_name">org.Licence3.simo_tedom_prosper</string>
+    <string name="custom_url_scheme">org.Licence3.simo_tedom_prosper</string>
+</resources>

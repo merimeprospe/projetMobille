@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="error" class="error"> 
+    <span>{{ error }}</span> 
+    <ion-icon slot="end" name="close" (click)="close1()"></ion-icon>
+  </div>
+  <ion-item  id="modal">
+    <ion-label >modifier le mot de passe</ion-label>
+  </ion-item>
+  
+  <ion-modal trigger="modal" initialBreakpoint="0.5">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>modifiction du mot de passe</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <form action="">
+          <ion-item>
+            <ion-label position="floating">mot de pass</ion-label>
+            <ion-input  (ionInput)="searchItems($event)"  name="intitule" type="text"  placeholder></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">nouveau mot de passe </ion-label>
+            <ion-input (ionInput)="searchItems1($event)"  name="d" type="number" placeholder="Nom"></ion-input>
+          </ion-item>
+          <br>
+          <br>
+          <ion-button  expand="block" shape="round" type="submit" (click)="modifier()">
+            modifier
+          </ion-button> 
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

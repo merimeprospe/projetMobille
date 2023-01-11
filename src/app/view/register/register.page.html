@@ -1,0 +1,82 @@
+<!-- <ion-content>
+  <form #form="ngForm" (ngSubmit)="register(form)"  method="post">
+    <ion-item>
+      <ion-label position="floating">Nom</ion-label>
+      <ion-input [(ngModel)]="user.name" name="nom" type="text"  placeholder="Nom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">budget</ion-label>
+      <ion-input [(ngModel)]="user.budget" name="budget" type="number"  placeholder="budget"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Mot de passe</ion-label>
+      <ion-input [(ngModel)]="user.password" (ionChange)="passwordChange()" name="password " type="number" placeholder="Mot de passe"></ion-input>
+    </ion-item>
+    <div *ngIf="isActif">
+      <ion-range min="0" max="100"  value={{val}} pin="true" mode="md" color={{color}}></ion-range>
+    </div>
+    <ion-item>
+      <ion-label position="floating">Confirme passe</ion-label>
+      <ion-input [(ngModel)]="configPassword" name="configpassword" type="number" placeholder="Confirme passe"></ion-input>
+    </ion-item>
+    <br>
+    <br>
+    <ion-button  type="submit" expand="block" shape="round">Register</ion-button> 
+  </form>
+  
+</ion-content> -->
+<ion-content>
+  <div class="container">
+    <div class="screen">
+      <div *ngIf="error" class="error"> 
+        <span>{{ error }}</span> 
+        <ion-icon slot="end" name="close" (click)="close()"></ion-icon>
+      </div> 
+      <div class="screen__content">
+        <form class="login" #form="ngForm" (ngSubmit)="register(form)"  method="post">
+          <div class="tilte"> <span class="titleApp">Manage</span> <span class="titleApp2">App</span></div>
+          <div class="login__field">
+            <i class="login__icon fas fa-user"></i>
+            <input (click)="close()" type="text" [(ngModel)]="user.name" name="nom" class="login__input"  placeholder="User name / Email">
+          </div>
+          <div class="login__field">
+            <i class="login__icon fas fa-user"></i>
+            <input (click)="close()" type="text" class="login__input"[(ngModel)]="user.budget" name="budget" type="number"  placeholder="budget">
+          </div>
+          <div class="login__field">
+            <i class="login__icon fas fa-lock"></i>
+            <ion-input (click)="close()" [(ngModel)]="user.password" class="login__input display-none"  name="password " type="number" (ionChange)="passwordChange()" placeholder="    Mot de passe"></ion-input>
+            <input (click)="close()" type="password" [(ngModel)]="user.password" name="password "   class="login__input"  placeholder="Password">
+            <!-- <ion-input (ionChange)="passwordChange()" type="password" class="login__input"  [(ngModel)]="user.password" name="password " type="number" placeholder="Mot de passe"></ion-input> -->
+          </div>
+          <div *ngIf="isActif">
+            <ion-range min="0" max="100"  value={{val}} pin="true" mode="md" color={{color}}></ion-range>
+          </div>
+          <div class="login__field">
+            <i class="login__icon fas fa-lock"></i>
+            <input (click)="close()" type="password" class="login__input"  [(ngModel)]="configPassword" name="configpassword" type="number" placeholder="Confirme passe">
+          </div>
+          <button class="button login__submit">
+            <span class="button__text" type="submit">s'inscrire</span>
+            <i class="button__icon fas fa-chevron-right"></i>
+          </button>
+        </form>
+        <div class="social-login">
+          <h3 [routerLink]="['/login']" defaultHref="/login"> Connexion </h3>
+          <div class="social-icons">
+            <a href="#" class="social-login__icon fab fa-instagram"></a>
+            <a href="#" class="social-login__icon fab fa-facebook"></a>
+            <a href="#" class="social-login__icon fab fa-twitter"></a>
+          </div>
+        </div>
+      </div>
+      <div class="screen__background">
+        <span class="screen__background__shape screen__background__shape4"></span>
+        <span class="screen__background__shape screen__background__shape3"></span>
+        <span class="screen__background__shape screen__background__shape2"></span>
+        <span class="screen__background__shape screen__background__shape1"></span>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

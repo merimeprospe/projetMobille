@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear">
+      <ion-button (click)="logout()" fill="clear">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-button>
+    <ion-title>{{user.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>budget: {{user.budget}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total depenses journaliere: {{tj}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total depenses mensuelle: {{tm}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total revenue journaliere: {{ej}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total revenue mensuelle: {{em}}</ion-label>
+    </ion-item>
+
+    <ion-item  id="modalform">
+      <ion-label >Operation</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-modal trigger="modalform" initialBreakpoint="0.25">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>efectuer une operation</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-item (click)="recherche()">
+          <ion-label position="started">Dépense</ion-label>
+          <ion-icon name="chevron-forward-outline"></ion-icon> 
+        </ion-item>
+        <ion-item (click)="recherche1()">
+          <ion-label position="started">Entrée</ion-label>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

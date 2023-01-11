@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="fin()">
+      <ion-icon name="arrow-back" color="prospe" class="icon1"></ion-icon>
+    </ion-buttons>
+    <ion-title>pageEntree</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form action="">
+    <ion-item>
+      <ion-label position="floating">Intitule</ion-label>
+      <ion-input  (ionInput)="searchItems($event)"  name="intitule" type="text"  placeholder></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Montant</ion-label>
+      <ion-input (ionInput)="searchItems1($event)"  name="d" type="number" placeholder="Nom"></ion-input>
+    </ion-item>
+    <br>
+    <br>
+    <ion-button  expand="block" shape="round" type="submit" (click)="retrieveData()">
+      Enregistrr
+    </ion-button>
+  </form>
+</ion-content>
