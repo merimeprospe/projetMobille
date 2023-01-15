@@ -22,27 +22,29 @@ export class DashboardPage implements OnInit {
   em = 0
   @ViewChild(IonModal) Modal:IonModal | any
 
-  constructor(private authService:AuthenticationService, private modale: ModalController,private BdService: ServiceBDService) { }
+  constructor(private authService:AuthenticationService, private modale: ModalController,private BdService: ServiceBDService) { 
+   
+  }
 
   async ngOnInit() {
-    this.user = globalInfo.user
+    this.user = JSON.parse(localStorage.getItem("globalInfo") as string)
     
   }
   t = setInterval(async () => {
+    this.user = JSON.parse(localStorage.getItem("globalInfo") as string)
     this.ops1 = []
     this.ops = await this.BdService.readDataBase("operation")
     if(this.ops)
     {
       this.ops.forEach((el:any) => {
         console.log("oooo");
-        console.log("ooooooooooooooooooooooooooooooooooooooooooooooo",el.user.name, globalInfo.user.name);
-        if(el.user.name == globalInfo.user.name)
+        if(el.user.name == this.user.name)
         {
           console.log("tttt");
-          
           this.ops1.push(el)
         }
       });
+      localStorage.setItem("ops", JSON.stringify(this.ops1))
       if(this.ops1){
         this.jourdepense()
         this.jourentrer()

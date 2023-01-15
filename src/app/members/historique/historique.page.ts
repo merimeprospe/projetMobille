@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/providers/authentication.service';
 import { ServiceBDService } from 'src/app/providers/service-bd.service';
 import {globalInfo} from '../../view/login/login.page';
 
@@ -13,19 +14,23 @@ export class HistoriquePage implements OnInit {
   a: any []= [] 
   i = 0  
   o: any
-  n = 0                                                                                                                                                                                              
-  constructor(private BdService: ServiceBDService) { }
+  n = 0 
+  user:any                                                                                                                                                                                             
+  constructor(private authService:AuthenticationService,private BdService: ServiceBDService) { 
+    this.ops1 = JSON.parse(localStorage.getItem("ops") as string)
+  }
 
   async ngOnInit() {
    //this.BdService.deletDataBase()
    //this.BdService.deletTabeDataBase("operation")
+   this.user = JSON.parse(localStorage.getItem("globalInfo") as string)
    this.ops1=[]
     this.a = []
     this.n=0
     this.ops = await this.BdService.readDataBase("operation")
     this.ops.forEach((el:any) => {
       console.log("oooo");
-      if(el.user.name == globalInfo.user.name)
+      if(el.user.name == this.user.name)
       {
         console.log("tttt");
         
@@ -60,19 +65,25 @@ export class HistoriquePage implements OnInit {
     
   }
   t = setInterval(async () => {
-  this.ops1=[]
+  let ok = localStorage.getItem("operation")
+  if(ok="1"){
+    this.ops1 = []
+    this.ops = await this.BdService.readDataBase("operation")
+    if(this.ops)
+    {
+      this.ops.forEach((el:any) => {
+        console.log("oooo");
+        if(el.user.name == this.user.name)
+        {
+          console.log("tttt");
+          this.ops1.push(el)
+        }
+      });
+    }
+    localStorage.setItem("operation", "0")
+  }
   this.a = []
   this.n=0
-  this.ops = await this.BdService.readDataBase("operation")
-  this.ops.forEach((el:any) => {
-    console.log("oooo");
-    if(el.user.name == globalInfo.user.name)
-    {
-      console.log("tttt");
-      
-      this.ops1.push(el)
-    }
-  });
   this.ops1.forEach((el:any) => {
     this.n++
     if (this.i==0) {
@@ -170,19 +181,37 @@ export class HistoriquePage implements OnInit {
     return d
   }
   async delet(ob:any){
-    console.log("delete", ob);
+    console.log("delete", ob,this.user);
     if(ob.type == "Entrer")
     {
       console.log("simo");
-      this.BdService.reduceBudjet(ob.montant,globalInfo.user)
-      globalInfo.user.budget = globalInfo.user.budget-ob.montant
+      this.BdService.reduceBudjet(ob.montant,this.user)
+      this.user.budget = this.user.budget-ob.montant
+      localStorage.setItem("globalInfo", JSON.stringify(this.user))
     }else{
       console.log("tedom");
-      this.BdService.addBudjet(ob.montant,globalInfo.user)
-      globalInfo.user.budget = globalInfo.user.budget+ob.montant
+      this.BdService.addBudjet(ob.montant,this.user)
+      this.user.budget = this.user.budget+ob.montant
+      localStorage.setItem("globalInfo", JSON.stringify(this.user))
       console.log("tedom");
     }
     await this.BdService.supp('operation',ob)
     console.log("dddddddddddddddddddÈ", ob)
+    this.ops1 = []
+    this.ops = await this.BdService.readDataBase("operation")
+    if(this.ops)
+    {
+      this.ops.forEach((el:any) => {
+        console.log("oooo");
+        if(el.user.name == this.user.name)
+        {
+          console.log("tttt");
+          this.ops1.push(el)
+        }
+      });
+    }
+  }
+  logout(){
+    this.authService.logout()
   }
 }

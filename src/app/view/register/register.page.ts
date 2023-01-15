@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/providers/authentication.service';
 import { ServiceBDService } from 'src/app/providers/service-bd.service';
 import {globalInfo} from '../login/login.page'
@@ -19,7 +20,7 @@ export class RegisterPage implements OnInit {
   isActif = 0
   error: any = false 
 
-  constructor(private BdService: ServiceBDService, private authService:AuthenticationService) { }
+  constructor(private BdService: ServiceBDService, private authService:AuthenticationService,private route:Router) { }
 
   async ngOnInit() {
     this.users = await this.BdService.readDataBase("users")
@@ -92,8 +93,7 @@ export class RegisterPage implements OnInit {
             console.log("OK5");
             this.user.id = this.id+1;
             await this.BdService.addeDataBase('users',this.user)
-            globalInfo.user = this.user
-            this.authService.login();
+            this.route.navigateByUrl('/login');
           }else{
             this.error="mot de passe trop faible "
           }

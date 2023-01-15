@@ -13,4 +13,139 @@
     display: flex;
     justify-content: space-between;
 }
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0px;
+  }
+  .error{
+      padding: 10px;
+      border: 1px solid rgb(219, 1, 1);
+      border-radius: 5px;
+      position: absolute;
+      top: 86px;
+      left: 8px;
+      margin-bottom: 20px;
+      z-index: 9;
+      gap: 28px;
+      right: 13px;
+      color: rgb(219, 1, 1);
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .line{
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    height:  80%;
+  }
+  img{
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+  }
+  .profil{
+    margin: 20px;
+  }
+  data{
+    margin: 20px;
+  }
+  .foot{
+    height: 20%;
+    background-color: #0000006c;
+    text-transform: uppercase;
+    color: #fff;
+    padding-left: 30px;
+    font-size: 1.6em;
+    display: flex;
+    align-items: center;
+  }
+  .name {
+    font-size: 1.7em;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  .role{
+    font-size: 1.4em;
+    color: #fff;
+  }
+  .container{
+    background-color: #6c63acad;
+    height: 170px;
+    border-radius: 10px;
+    margin: 15px;
+  }
+  
+  
+  .row{
+    padding:  5px;
+  }
+  .element{
+    width: 95%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+  }
+  .profile{
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#6C63AC;
+  }
+  .r1{
+    color: #ffffff;
+  }
+  .e1{
+    background-color: #4855e0a4;
+  }
+  .e2{
+    background-color: #ffc609bd;
+  }
+  .e3{
+    background-color: rgba(255, 0, 0, 0.644);
+  }
+  .imgmail{
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .ion-header {
+    
+    ion-toolbar {
+        --background: #6C63AC;
+        --color: white;
+        text-align: center;
+        padding: 0% 4%;
+    }
+}
 
+.content {
+  --background: #d8d5ec;
+  // --padding: 15% 10%;
+
+  margin: 0%;
+  
+  ion-item {
+      --background: #d8d5ec;
+      --border-radius: 40px;
+      --border-style: solid;
+      --border-width: 8px;
+      margin: 5% 3%;
+  }
+
+  ion-button {
+      --background: #6C63AC;
+      margin: 0% 6%;
+  }
+}

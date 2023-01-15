@@ -18,9 +18,11 @@ export class PageDepensePage implements OnInit {
     date: new Date()
   };
   ops : any
+  user:any
   id = 0
+  error: any = false 
   constructor(private module:ModalController,private BdService: ServiceBDService) {
-
+    this.user = JSON.parse(localStorage.getItem("globalInfo") as string)
    }
 
   async ngOnInit() {
@@ -30,7 +32,9 @@ export class PageDepensePage implements OnInit {
       this.id = this.ops.length
     }
   }
-
+  close(){
+    this.error=false
+  }
   fin(){
     this.module.dismiss()
   }
@@ -44,17 +48,20 @@ export class PageDepensePage implements OnInit {
   async retrieveData(){
     // this.op.date = maDate.getDate()+"/"+maDate.getMonth()+"/"+maDate.getFullYear()
     // this.op.time = maDate.getHours()+":"+maDate.getMinutes()
-    if(this.op.montant <= globalInfo.user.budget)
+    if(this.op.montant <= this.user.budget)
     {
-      this.BdService.reduceBudjet(this.op.montant,globalInfo.user)
-      globalInfo.user.budget = globalInfo.user.budget-this.op.montant
+      this.BdService.reduceBudjet(this.op.montant,this.user)
+      this.user.budget = this.user.budget-this.op.montant
       this.op.id = this.id+1;
-      this.op.user = globalInfo.user
+      this.op.user = this.user
       this.op.date = new Date()
       this.op.type = "Depense"
       console.log("dddddddddddddddddddÈ", this.op)
       await this.BdService.addeDataBase('operation',this.op)
+      localStorage.setItem("operation", "1")
       this.fin()
+    }else{
+      this.error="Votre budjet est insuffisant pour effectuer cette opération"
     }
   }
 }

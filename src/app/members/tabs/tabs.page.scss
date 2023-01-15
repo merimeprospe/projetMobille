@@ -1,0 +1,13 @@
+ion-tabs {
+    ion-tab-bar {
+        padding: 10px 0;
+
+        ion-tab-button {
+            --background-focused: #6C63AC;
+            --background-focused-opacity: 1;
+            --color: #aba4e2;
+            --color-focused: #6C63AC;
+            --color-selected: #6C63AC;
+        }
+    }
+}

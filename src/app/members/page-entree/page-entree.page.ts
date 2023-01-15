@@ -19,8 +19,11 @@ export class PageEntreePage implements OnInit {
     date: new Date()
   };
   ops : any
+  user:any
   id = 0
-  constructor(private module:ModalController,private BdService: ServiceBDService) { }
+  constructor(private module:ModalController,private BdService: ServiceBDService) { 
+    this.user = JSON.parse(localStorage.getItem("globalInfo") as string)
+  }
 
   async ngOnInit() {
     this.ops = await this.BdService.readDataBase("operation")
@@ -43,14 +46,15 @@ export class PageEntreePage implements OnInit {
   async retrieveData(){
     // this.op.date = maDate.getDate()+"/"+maDate.getMonth()+"/"+maDate.getFullYear()
     // this.op.time = maDate.getHours()+":"+maDate.getMinutes()
-    this.BdService.addBudjet(this.op.montant,globalInfo.user)
-    globalInfo.user.budget = globalInfo.user.budget+this.op.montant
+    this.BdService.addBudjet(this.op.montant,this.user)
+    this.user.budget = this.user.budget+this.op.montant
     this.op.id = this.id+1;
-    this.op.user = globalInfo.user
+    this.op.user = this.user
     this.op.date = new Date()
     this.op.type = "Entrer"
     console.log("dddddddddddddddddddÈ", this.op)
     await this.BdService.addeDataBase('operation',this.op)
+    localStorage.setItem("operation", "1")
     this.fin()
   }
 }

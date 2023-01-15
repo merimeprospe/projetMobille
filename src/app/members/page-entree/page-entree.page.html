@@ -1,13 +1,15 @@
-<ion-header>
+<div class="ion-header">
   <ion-toolbar>
     <ion-buttons slot="start" (click)="fin()">
       <ion-icon name="arrow-back" color="prospe" class="icon1"></ion-icon>
     </ion-buttons>
-    <ion-title>pageEntree</ion-title>
+    <ion-title>Page entrée</ion-title>
   </ion-toolbar>
-</ion-header>
+</div>
 
 <ion-content>
+  
+  <h2 style="text-align: center; font-size: 26px; padding-bottom: 5%; padding-top: 5%;">Formulaire Entrée</h2>
   <form action="">
     <ion-item>
       <ion-label position="floating">Intitule</ion-label>
@@ -20,7 +22,7 @@
     <br>
     <br>
     <ion-button  expand="block" shape="round" type="submit" (click)="retrieveData()">
-      Enregistrr
+      Enregistrer
     </ion-button>
   </form>
 </ion-content>

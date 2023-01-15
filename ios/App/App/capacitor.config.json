@@ -1,0 +1,6 @@
+{
+	"appId": "org.Licence3.simo_tedom_prosper",
+	"appName": "manageApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

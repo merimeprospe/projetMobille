@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal, ModalController } from '@ionic/angular';
+import { AuthenticationService } from 'src/app/providers/authentication.service';
 import { ServiceBDService } from 'src/app/providers/service-bd.service';
 import {globalInfo} from '../../view/login/login.page';
 
@@ -14,15 +15,17 @@ export class ProfilPage implements OnInit {
   n_mp:any
   user:any
   error: any = false 
-  constructor(private modale: ModalController, private BdService: ServiceBDService) { }
+  constructor(private authService:AuthenticationService,private modale: ModalController, private BdService: ServiceBDService) { }
 
   ngOnInit() {
-    this.user = globalInfo.user
+    this.user =  this.user = JSON.parse(localStorage.getItem("globalInfo") as string)
     console.log(this.user);
-    
   }
   close(){
     this.Modal.dismiss();
+  }
+  logout(){
+    this.authService.logout()
   }
   close1(){
     this.error=false

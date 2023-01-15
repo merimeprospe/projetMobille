@@ -34,6 +34,8 @@ export class ServiceBDService {
   {
     let users= await this.readDataBase("users")
     users.forEach((e:any) => {
+      console.log("e.id == user.id  === ",e.id == user.id);
+      
       if (e.id == user.id)
       {
         e.budget = e.budget + el

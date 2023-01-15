@@ -27,10 +27,9 @@ export class LoginPage implements OnInit {
   async ngOnInit() {
     
   }
-  n= setInterval(async () => {
+ 
+  async login(form: NgForm){
     this.users = await this.BdService.readDataBase("users")
-  }, 1000);
-  login(form: NgForm){
     let i = 0
     if(this.user.name)
     {
@@ -42,6 +41,7 @@ export class LoginPage implements OnInit {
             globalInfo.user.budget = parseFloat(el.budget)
             console.log(el);
             globalInfo.user.id = el.id
+            localStorage.setItem("globalInfo", JSON.stringify(el))
             globalInfo.user.name = el.name
             this.authService.login();
           }

@@ -1,33 +1,88 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profil</ion-title>
+    <ion-button slot="start" fill="clear">
+      <ion-button (click)="logout()" fill="clear">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-button>
+    <ion-title>{{user.name}}</ion-title>
+    <ion-button slot="end" fill="clear">
+      <div class="profile"> {{user.name.charAt(0).toUpperCase()}} </div>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <div *ngIf="error" class="error"> 
     <span>{{ error }}</span> 
     <ion-icon slot="end" name="close" (click)="close1()"></ion-icon>
   </div>
-  <ion-item  id="modal">
-    <ion-label >modifier le mot de passe</ion-label>
-  </ion-item>
-  
+  <div class="container">
+    <div class="line">
+      <div class="profil">
+        <img src="assets/img/profil.png" alt="">
+      </div>
+      <div class="data">
+        <div class="name">{{user.name}}</div>
+        <div class="role">user</div>
+      </div>
+    </div>
+    <div class="foot">Profil</div>
+  </div>
+  <div class="containt">
+    <div class="row r1">
+      <div class="element e1">
+        <div class="imgmail">
+          <img class="imgmail" src="assets/img/gmail.png" alt="">
+        </div>
+        <div>
+          <div class="name">Budget</div>
+          <div class="role">{{user.budget}} FCFA</div>
+        </div>
+      </div>
+    </div>
+    <div class="row r1" id="modal">
+      <div class="element e2">
+        <div class="imgmail">
+          <img class="imgmail" src="assets/img/password.png" alt="">
+        </div>
+        <div>
+          <div class="name">modifier</div>
+          <div class="role" id="modal">modifier mot de passe</div>
+        </div>
+      </div>
+    </div>
+    <div class="row r1" (click)="logout()">
+      <div class="element e3">
+        <div class="imgmail">
+          <img class="imgmail" src="assets/img/logout.png" alt="">
+        </div>
+        <div>
+          <div class="name">deconnexion</div>
+          <div class="role" id="modal">se deconecter</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="error" class="error">
+    <span>{{ error }}</span>
+    <ion-icon slot="end" name="close" (click)="close1()"></ion-icon>
+  </div>
+
   <ion-modal trigger="modal" initialBreakpoint="0.5">
     <ng-template>
-      <ion-header>
+      <div class="ion-header">
         <ion-toolbar>
-          <ion-title>modifiction du mot de passe</ion-title>
+          <ion-title>Modifiction du mot de passe</ion-title>
         </ion-toolbar>
-      </ion-header>
-      <ion-content>
+      </div> 
+      <ion-content class="content">
         <form action="">
           <ion-item>
-            <ion-label position="floating">mot de pass</ion-label>
+            <ion-label position="floating">Mot de passe</ion-label>
             <ion-input  (ionInput)="searchItems($event)"  name="intitule" type="text"  placeholder></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="floating">nouveau mot de passe </ion-label>
+            <ion-label position="floating">Nouveau mot de passe</ion-label>
             <ion-input (ionInput)="searchItems1($event)"  name="d" type="number" placeholder="Nom"></ion-input>
           </ion-item>
           <br>
