@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/providers/authentication.service';
 import { ServiceBDService } from 'src/app/providers/service-bd.service';
 import {globalInfo} from '../../view/login/login.page';
@@ -16,7 +17,7 @@ export class HistoriquePage implements OnInit {
   o: any
   n = 0 
   user:any                                                                                                                                                                                             
-  constructor(private authService:AuthenticationService,private BdService: ServiceBDService) { 
+  constructor(private authService:AuthenticationService,private routes:Router, private BdService: ServiceBDService) { 
     this.ops1 = JSON.parse(localStorage.getItem("ops") as string)
   }
 
@@ -63,6 +64,9 @@ export class HistoriquePage implements OnInit {
     });
     console.log(this.a);
     
+  }
+  route(){
+    this.routes.navigateByUrl('members/tabs/profil');
   }
   t = setInterval(async () => {
   let ok = localStorage.getItem("operation")

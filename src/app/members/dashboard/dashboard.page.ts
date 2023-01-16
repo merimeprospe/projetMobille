@@ -6,6 +6,7 @@ import { ModalController } from '@ionic/angular';
 import { PageDepensePage } from '../page-depense/page-depense.page';
 import { PageEntreePage } from '../page-entree/page-entree.page';
 import { ServiceBDService } from 'src/app/providers/service-bd.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,13 +23,17 @@ export class DashboardPage implements OnInit {
   em = 0
   @ViewChild(IonModal) Modal:IonModal | any
 
-  constructor(private authService:AuthenticationService, private modale: ModalController,private BdService: ServiceBDService) { 
+  constructor(private authService:AuthenticationService,private routes:Router, private modale: ModalController,private BdService: ServiceBDService) { 
    
   }
 
   async ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("globalInfo") as string)
     
+  }
+  route(){
+    console.log("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+    this.routes.navigateByUrl('members/tabs/profil');
   }
   t = setInterval(async () => {
     this.user = JSON.parse(localStorage.getItem("globalInfo") as string)

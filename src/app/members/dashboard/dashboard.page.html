@@ -6,7 +6,7 @@
       </ion-button>
     </ion-button>
     <ion-title>{{user.name}}</ion-title>
-    <ion-button slot="end" fill="clear">
+    <ion-button slot="end" fill="clear" (click)="route()">
       <div class="profile"> {{user.name.charAt(0).toUpperCase()}} </div>
     </ion-button>
   </ion-toolbar>

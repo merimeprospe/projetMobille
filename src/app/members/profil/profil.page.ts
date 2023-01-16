@@ -43,6 +43,7 @@ export class ProfilPage implements OnInit {
         if(el.password == this.mp)
         {
           this.BdService.modifpassword(el,this.n_mp)
+          this.Modal.dismiss();
         }
         else{
           this.error="mot de passe incorret"

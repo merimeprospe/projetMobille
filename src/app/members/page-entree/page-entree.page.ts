@@ -55,6 +55,7 @@ export class PageEntreePage implements OnInit {
     console.log("dddddddddddddddddddÈ", this.op)
     await this.BdService.addeDataBase('operation',this.op)
     localStorage.setItem("operation", "1")
+    localStorage.setItem("globalInfo", JSON.stringify(this.user))
     this.fin()
   }
 }
